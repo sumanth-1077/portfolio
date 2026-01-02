@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>T V Sumanth — Portfolio</title>
+  <meta name="description" content="Portfolio of Thummapudi Venkata Sumanth — Software Developer Intern (Java, Python, React)." />
+
+  <style>
+    :root{
+      --bg:#443c5f;
+      --card:#0f1830;
+      --text:#eef2ff;
+      --muted:#b7c5ea;
+      --accent:#7aa7ff;
+      --accent2:#32d9c4;
+      --border:rgba(201, 81, 81, 0.12);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .cert-slider{
+    position:relative;
+    width:100%;
+    max-width:720px;
+    margin:8px auto 0;
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:#0c111c;
+  }
+
+  .cert-slider .slides{
+    display:flex;
+    transition:transform .45s ease;
+  }
+
+  /* 🔥 FIX — each image fills full slide width */
+  .cert-slider img{
+    flex:0 0 100%;
+    width:100%;
+    height:420px;
+    object-fit:contain;
+    padding:10px;
+    background:#ffffff;
+  }
+
+  .cert-slider .nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    border:none;
+    font-size:26px;
+    padding:8px 14px;
+    cursor:pointer;
+    border-radius:10px;
+  }
+
+  .cert-slider .prev{left:10px}
+  .cert-slider .next{right:10px}
+  .cert-slider .nav:hover{background:rgba(0,0,0,.85)}
+
+    .muted{color:var(--muted);font-size:14px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 600px at 12% 0%, rgba(122,167,255,.22), transparent 60%),
+        radial-gradient(700px 500px at 90% 12%, rgba(50,217,196,.18), transparent 55%),
+        linear-gradient(180deg, #070b16, var(--bg));
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,11,22,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar{
+      max-width:1040px;
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .dot{width:10px; height:10px; border-radius:999px; background:linear-gradient(135deg, var(--accent), var(--accent2))}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--text);
+      background:rgba(255,255,255,.03);
+    }
+    .pill:hover{border-color:rgba(122,167,255,.55)}
+
+    .container{max-width:1040px; margin:0 auto; padding:26px 18px 72px}
+
+    .hero{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:860px){
+      .hero{grid-template-columns:1.4fr .6fr; align-items:stretch}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius:18px;
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+
+    h1{font-size:34px; margin:0}
+    @media(min-width:860px){ h1{font-size:42px} }
+    h2{font-size:18px; margin:0 0 8px}
+    .subtitle{color:var(--muted); margin:8px 0 10px}
+    .muted{color:var(--muted)}
+
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{font-size:12px; padding:5px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted)}
+
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      font-weight:600;
+    }
+    .btn.primary{background:rgba(122,167,255,.18); border-color:rgba(122,167,255,.5)}
+
+    /* Profile Photo */
+    .avatar{
+      width:100%;
+      max-width:280px;
+      margin:0 auto;
+      border-radius:18px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      background:#ffffff;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+      padding:6px;
+    }
+    .avatar img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      object-position:center top;
+      display:block;
+    }
+
+    /* Smaller project description text */
+    .project-desc{
+      font-size:14px;
+      color:var(--muted);
+      margin:6px 0 10px 0;
+      line-height:1.5;
+    }
+
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:14px; margin-top:14px}
+    .span-12{grid-column:span 12}
+    .two-col{grid-column:span 12}
+    @media(min-width:860px){ .two-col{grid-column:span 6} }
+
+    ul{margin:10px 0 0; padding-left:18px}
+
+    footer{margin-top:26px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:14px}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <strong>THUMMAPUDI VENKATA SUMANTH</strong>
+      </div>
+      <nav>
+        <a class="pill" href="#summary">Summary</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#experience">Experience</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h1>Software Developer Intern</h1>
+        <p class="subtitle">Java • Python • React • SQL • Automation Testing</p>
+        <p class="muted">
+          Motivated Software Engineering graduate with strong fundamentals in Java, Python, and Automation Testing.
+          Hands-on experience through internships and projects using HTML, CSS, JavaScript, React, SQL, and Agile SDLC.
+          Quick learner with strong problem-solving skills, eager to contribute to real-world software development.
+        </p>
+        <div class="chips">
+          <span class="chip">Kandukur, Andhra Pradesh, India</span>
+          <span class="chip">English • Telugu • Hindi</span>
+          <span class="chip">Agile / SDLC</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;">
+        <div class="avatar" title="Profile photo">
+          <img src="photo.jpg" alt="Thummapudi Venkata Sumanth" />
+        </div>
+        <div class="muted" style="text-align:center;font-size:14px;">
+          Phone: <a href="tel:+918309383897">+91 8309383897</a><br />
+          Email: <a href="mailto:tvsumanth1077@gmail.com">tvsumanth1077@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="grid">
+      <div class="card span-12">
+        <h2>Summary</h2>
+        <p class="muted">
+          Motivated Software Engineering graduate with strong fundamentals in Java, Python, and Automation Testing.
+          Hands-on experience through internships and projects using HTML, CSS, JavaScript, React, SQL, and Agile SDLC.
+        </p>
+        <p class="muted">Languages: Telugu, English, Hindi</p>
+        <p class="muted">Interests: Watching movies, playing cricket.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="grid">
+      <div class="card two-col">
+        <h2>Skills</h2>
+        <ul>
+          <li><strong>Programming:</strong> Java, Python, Automation Testing</li>
+          <li><strong>Web:</strong> HTML, CSS, Bootstrap, JavaScript, React</li>
+          <li><strong>Databases:</strong> MySQL, PostgreSQL</li>
+          <li><strong>Concepts:</strong> OOP, Agile, SDLC</li>
+          <li><strong>Tools:</strong> VS Code, Eclipse, Google Collab</li>
+          <li><strong>Soft skills:</strong> Teamwork, Communication Skills, Problem solving</li>
+        </ul>
+      </div>
+    
+    </section>
+
+    
+    
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="grid">
+      <div class="card span-12">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <strong>Real Time Car Parking System Using Image Processing in Smart Cities</strong> — IoT, MATLAB, Python
+            <p class="project-desc">
+              Designed and implemented a real-time parking management solution that uses image processing to automatically detect and track available parking slots from live camera footage. The system helps drivers find parking faster, minimizes fuel consumption, and supports smart-city traffic optimization.
+            </p>
+          </li>
+
+          <li><strong>Student Accommodation Website</strong> — HTML, CSS, JavaScript, Bootstrap, PHP, React</li>
+          <p class="project-desc">Created a student housing platform designed to simplify the process of finding affordable and verified accommodation. The system bridges the gap between students and property owners, reduces manual searching, and improves accessibility to safe living options.</p>
+
+          
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    
+    <section id="experience" class="grid">
+      <div class="card span-12">
+        <h2>Experience</h2>
+        <p class="muted"><strong>Infosys Limited — Software Developer Intern</strong> (Jul 2025 – Present)</p>
+        <ul>
+          <li>Designed and developed scalable web modules using Java, Python, and React</li>
+          <li>Developed reusable and maintainable code components, improving application performance and code quality</li>
+          <li>Assisted in debugging, defect fixing, and unit testing to ensure reliability and adherence to coding standards</li>
+          <li>Worked in an Agile/Scrum environment, participating in daily stand-ups, sprint reviews, and team discussions</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education" class="grid">
+      <div class="card two-col">
+        <h2>Education</h2>
+        <ul>
+          <li><strong>B.Tech (ECE)</strong> — RISE Krishna Sai Prakasam Group of Institutions (2021–2025) CGPA - 7.5</li>
+          <li><strong>Intermediate (PCM)</strong> — Narayana Junior College (2019–2021) CGPA - 9.25</li>
+          <li><strong>SSC (X)</strong> — Vignan Vihar English Medium High School (2018–2019) CGPA - 9.5</li>
+        </ul>
+      </div>
+    </section>
+
+    <br>
+    <section>
+      <div class="card two-col">
+        <h2>Certifications</h2>
+        <ul>
+          <li>AWS Certified Developer Associate - AWS (2025)</li>
+          <li>Postman API Student Fundamentals Expert - Postman (2025)</li>
+          <li>Programming Using Java — Infosys Springboard (2025)</li>
+          <li>Intelligent Automation - Blue Prism (2024)</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ================= CERTIFICATION SLIDER ================= -->
+    <section id="certifications" class="grid">
+      <div class="card span-12">
+        <h2>Certification Gallery</h2>
+
+        <div class="cert-slider">
+          <button class="nav prev">&#10094;</button>
+
+          <div class="slides">
+            <!-- 👉 Replace with your real images -->
+            <img src="cert1.jpg" alt="AWS Certificate">
+            <img src="cert2.jpeg" alt="Postman Certificate">
+            <img src="cert3.jpg" alt="Programming using Java">
+            <img src="cert4.jpg" alt="Web Development Certificate">
+          </div>
+
+          <button class="nav next">&#10095;</button>
+        </div>
+
+        <p class="muted" style="text-align:center;margin-top:6px;">
+          Swipe or click arrows to view certificates
+        </p>
+      </div>
+    </section>
+    <br>
+    <section>
+      <div class="card two-col">
+        <h2>Publication</h2>
+        <p class="muted"><strong>Real Time Car Parking System Using Image Processing in Smart Cities</strong> (Apr 2025)</p>
+        <p><a href="https://ijrdst.org/public/uploads/paper/260261744544549.pdf" target="_blank" rel="noreferrer">View publication (PDF)</a></p>
+      </div>
+    </section>
+
+    <section id="contact" class="grid">
+      <div class="card span-12">
+        <h2>Contact</h2>
+        <ul>
+          <li>Email: <a href="mailto:tvsumanth1077@gmail.com">tvsumanth1077@gmail.com</a></li>
+          <li>Phone: <a href="tel:+918309383897">+91 8309383897</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/thummapudi-venkata-sumanth-9a8173268" target="_blank" rel="noreferrer">linkedin.com/in/thummapudi-venkata-sumanth-9a8173268</a></li>
+          <li>GitHub: <a href="https://github.com/sumanth-1077" target="_blank" rel="noreferrer">github.com/sumanth-1077</a></li>
+          <li>Location: Kandukur, Andhra Pradesh, India</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Thummapudi Venkata Sumanth</div>
+    </footer>
+  </main>
+
+    <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // ⭐ Certification Slider
+  const slider = document.querySelector(".cert-slider .slides");
+  const images = document.querySelectorAll(".cert-slider img");
+  const prev = document.querySelector(".cert-slider .prev");
+  const next = document.querySelector(".cert-slider .next");
+
+  let index = 0;
+  const total = images.length;
+
+  function updateSlide() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  next.addEventListener("click", () => {
+    index = (index + 1) % total;
+    updateSlide();
+  });
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + total) % total;
+    updateSlide();
+  });
+
+  // ⭐ Make sure each image is treated as one slide
+  images.forEach(img => {
+    img.style.flex = "0 0 100%";
+  });
+</script>
+
+
+</body>
+</html>
+
